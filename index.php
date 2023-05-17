@@ -25,7 +25,10 @@ $query = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($query) > 0) {
     while ($row = mysqli_fetch_assoc($query)) {
-        echo "<li>$row[id] | $row[name] | $row[address] | $row[email] | <a href='delete.php?hello=$row[id]'>Delete </a> </li>";
+        echo "<li>$row[id] | $row[name] | $row[address] | $row[email] | 
+        <a href='delete.php?hello=$row[id]'>Delete </a> ||
+        <a href='edit.php?id=$row[id]'>Edit </a>
+        </li>";
     }
 } else {
     echo 'No result found';
