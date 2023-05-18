@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['name'])) {
+    header('location: login.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +15,15 @@
     <title>DB</title>
 </head>
 <body>
+<?php include_once 'db.php'; ?>
 
-    <h1>Database <?php include_once 'db.php'; ?></h1>
+
+    <h1>Welcome
+            <?php if (isset($_SESSION['name'])) {
+                echo $_SESSION['name'];
+            } ?>
+
+</h1>
 
     <form action="insert.php" method="POST">
         <input type="text" name="name" placeholder="name">
@@ -36,6 +51,8 @@ if (mysqli_num_rows($query) > 0) {
 ?>
 </ul>
 
+
+<a href="logout.php">Logout</a>
 
 
     
